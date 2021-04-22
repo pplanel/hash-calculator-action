@@ -1,0 +1,12 @@
+name: 'String hasher'
+description: 'Hashes the provided string'
+inputs:
+  string:  # id of input
+    description: 'string to be hashed'
+    required: true
+outputs:
+  hashed_string: # output will be available to future steps
+    description: 'The hashed string to output'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
