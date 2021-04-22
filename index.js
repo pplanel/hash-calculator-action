@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const wait = require('./hasher');
+const hasher = require('./hasher');
 
 
 // most @actions toolkit packages have async methods
