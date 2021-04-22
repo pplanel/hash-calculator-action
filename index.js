@@ -9,7 +9,7 @@ async function run() {
 
     let hashed_string = await hasher(input_str);
 
-    core.setOutput('hashed_string', hashed_string);
+    core.setOutput('hashed_string', hashed_string.toString());
   } catch (error) {
     core.setFailed(error.message);
   }
