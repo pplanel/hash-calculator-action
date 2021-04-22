@@ -26,7 +26,7 @@ module.exports = hasher;
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(186);
-const wait = __nccwpck_require__(834);
+const hasher = __nccwpck_require__(834);
 
 
 // most @actions toolkit packages have async methods
