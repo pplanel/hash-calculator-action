@@ -5,7 +5,7 @@ let hasher = function (input_str) {
     }
 
 
-    var hashed_string = CryptoJS.MD5(input_str)
+    var hashed_string = CryptoJS.MD5(input_str).toString().slice(0, 7)
 
     resolve(hashed_string)
 
