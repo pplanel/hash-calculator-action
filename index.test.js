@@ -5,5 +5,5 @@ const path = require('path');
 
 test('can md5 hash a string', async () => {
   let hash__value = await hasher("sample string");
-  expect(hash__value.toString()).toBe("bcc7bec3c06016aa979fe07fceb0396a")
+  expect(hash__value.toString()).toBe("bcc7bec")
 })
