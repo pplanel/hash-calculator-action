@@ -5,14 +5,15 @@ require('./sourcemap-register.js');module.exports =
 /***/ 834:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const crypto = __nccwpck_require__(134)
+const CryptoJS = __nccwpck_require__(134)
 
 let hasher = function (input_str) {
   return new Promise((resolve) => {
     if (typeof input_str !== 'string') {
       throw new Error('milliseconds not a number')
     }
-    let hashed_string = crypto.MD5(input_str)
+    var hashed_string = CryptoJS.MD5(input_str).toString().slice(0, 7)
+
     resolve(hashed_string)
   });
 };
@@ -36,7 +37,7 @@ async function run() {
 
     let hashed_string = await hasher(input_str);
 
-    core.setOutput('hashed_string', hashed_string);
+    core.setOutput('hashed_string', hashed_string.toString());
   } catch (error) {
     core.setFailed(error.message);
   }
