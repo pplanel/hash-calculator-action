@@ -1,5 +1,4 @@
 # Hash Calculator GitHub Action
----
 ![badge](https://github.com/pplanel/hash-string-action/actions/workflows/test.yml/badge.svg)
 
 This action allows the user to calculate the cryptographic hash value of a string. Multiple hashing algorithms are supported including MD5, SHA1, SHA2 and [many more]().
