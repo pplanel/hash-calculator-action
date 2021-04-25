@@ -5,17 +5,28 @@ require('./sourcemap-register.js');module.exports =
 /***/ 834:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const CryptoJS = __nccwpck_require__(134)
+const HashAlgorithmFactory = __nccwpck_require__(632)
 
-let hasher = function (input_str) {
-  return new Promise((resolve) => {
-    if (typeof input_str !== 'string') {
-      throw new Error('milliseconds not a number')
-    }
-    var hashed_string = CryptoJS.MD5(input_str).toString().slice(0, 7)
+let hasher = function (hash_type, input_str, hash_output_length) {
+    return new Promise((resolve) => {
+        if (typeof input_str !== 'string') {
+            throw new Error('milliseconds not a number')
+        }
+        const hash_algo = HashAlgorithmFactory
+            .getHashAlgorithm(hash_type)
 
-    resolve(hashed_string)
-  });
+        if (hash_type === 'SHA3' || hash_type === 'SHA-3') {
+            const hashed_string = hash_algo(input_str, hash_output_length)
+                .toString()
+
+            resolve(hashed_string)
+        }
+
+        const hashed_string = hash_algo(input_str)
+            .toString()
+
+        resolve(hashed_string)
+    });
 };
 
 module.exports = hasher;
@@ -27,24 +38,77 @@ module.exports = hasher;
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(186);
-const hasher = __nccwpck_require__(834);
+const hasher = __nccwpck_require__(834)
 
 
 // most @actions toolkit packages have async methods
 async function run() {
-  try {
-    const input_str = core.getInput('string');
+    try {
+        const input_str = core.getInput('input_str');
+        const input_hash_algo = core.getInput('hash_algo');
+        const hash_output_length = core.getInput('hash_output_length');
 
-    let hashed_string = await hasher(input_str);
+        let output_string = await hasher(input_str, input_hash_algo, hash_output_length)
 
-    core.setOutput('hashed_string', hashed_string.toString());
-  } catch (error) {
-    core.setFailed(error.message);
-  }
+        core.setOutput('output_str', output_string.toString());
+    } catch (error) {
+        core.setFailed(error.message);
+    }
 }
 
 run();
 
+
+/***/ }),
+
+/***/ 632:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const CryptoJS = __nccwpck_require__(134)
+
+/*
+The HashAlgorithmFactory is a factory class that exposes
+the current supported hashing algorithms in CryptoJS
+ */
+class HashAlgorithmFactory {
+    static getHashAlgorithm(hash_type) {
+        switch (hash_type) {
+            case "MD5":
+                this.hashAlgorithm = CryptoJS.MD5
+                break;
+            case "SHA-1":
+            case "SHA1":
+                this.hashAlgorithm = CryptoJS.SHA1
+                break;
+            case "SHA-256":
+            case "SHA256":
+                this.hashAlgorithm = CryptoJS.SHA256
+                break
+            case "SHA-512":
+            case "SHA512":
+                this.hashAlgorithm = CryptoJS.SHA512
+                break;
+            case "SHA-3":
+            case "SHA3":
+                const SHA3 = (value, outputLength = 512) => {
+                    return CryptoJS.SHA3(value, {outputLength: outputLength})
+                }
+                this.hashAlgorithm = SHA3
+                break;
+            case "RIPEMD-160":
+            case "RIPEMD160":
+                this.hashAlgorithm = CryptoJS.RIPEMD160
+                break;
+            default:
+                this.hashAlgorithm = CryptoJS.SHA512
+                break;
+
+        }
+        return this.hashAlgorithm
+    }
+}
+
+module.exports = HashAlgorithmFactory
 
 /***/ }),
 

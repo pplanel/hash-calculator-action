@@ -1,6 +1,6 @@
 {
   "name": "hash-string-action",
-  "version": "1.0.0",
+  "version": "0.1.9",
   "description": "Github action to hash strings",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "JavaScript",
     "String Utils"
   ],
-  "author": "",
+  "author": "Pedro Gabriel Planel <pplanel@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pplanel/hash-string-action/issues"
@@ -33,5 +33,8 @@
     "@vercel/ncc": "^0.27.0",
     "eslint": "^7.4.0",
     "jest": "^26.6.3"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }

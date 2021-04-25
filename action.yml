@@ -1,12 +1,20 @@
 name: 'String hasher'
-description: 'Hashes the provided string'
+description: Provides several hashing algorithms and encrypts input string
 inputs:
-  string:  # id of input
-    description: 'string to be hashed'
+  hash_algo:
     required: true
+    description: The algorithm used to hash the input string (MD1, MD2, Keccak[c=2d] (MD3), RIPEMD-160 or MD5
+  input_str:
+    required: true
+    description: The hashed string to output
+  hash_output_length:
+    required: false
+    description: When choosing Keccak (MD3) you can optionally choose its output length. Default is 512 bits.
+
 outputs:
-  hashed_string: # output will be available to future steps
-    description: 'The hashed string to output'
+  output_str:
+    description: hashed string output
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
