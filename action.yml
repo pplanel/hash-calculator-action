@@ -1,5 +1,5 @@
 name: 'String hasher'
-description: Hash Calculator lets you calculate the cryptographic hash value of a string. Multiple hashing algorithms are supported including MD5, SHA1, SHA2 and many other algorithms.
+description: Hash Calculator lets you calculate the cryptographic hash value of a string.
 branding:
   icon: hash
   color: gray-dark
