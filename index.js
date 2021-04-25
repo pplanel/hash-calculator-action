@@ -9,7 +9,7 @@ async function run() {
         const input_hash_algo = core.getInput('method');
         const hash_output_length = core.getInput('ouput_lenth');
 
-        let output_string = await generator(input_str, input_hash_algo, hash_output_length)
+        let output_string = await generator(input, method, output_length)
 
         core.setOutput('output_str', output_string.toString());
     } catch (error) {
