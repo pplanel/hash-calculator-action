@@ -40,5 +40,4 @@ jobs:
 
 
 ## Contributing
----
 We love contributions, feedback, and bug reports. If you run into issues while running this action, [open an issue](https://github.com/pplanle/hash-calculator-action/issues) in this repository.
