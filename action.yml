@@ -1,20 +1,21 @@
 name: 'String hasher'
-description: Provides several hashing algorithms and encrypts input string
-inputs:
-  hash_algo:
-    required: true
-    description: The algorithm used to hash the input string (MD1, MD2, Keccak[c=2d] (MD3), RIPEMD-160 or MD5
-  input_str:
-    required: true
-    description: The hashed string to output
-  hash_output_length:
-    required: false
-    description: When choosing Keccak (MD3) you can optionally choose its output length. Default is 512 bits.
-
-outputs:
-  output_str:
-    description: hashed string output
-
+description: Hash Calculator lets you calculate the cryptographic hash value of a string. Multiple hashing algorithms are supported including MD5, SHA1, SHA2 and many other algorithms.
+branding:
+  icon: hash
+  color: gray-dark
 runs:
   using: 'node12'
   main: 'dist/index.js'
+inputs:
+  method:
+    required: true
+    description: The algorithm used to hash the input string. Check docs for all available methods.
+  input:
+    required: true
+    description: Input string to be converted.j
+  output_len:
+    required: false
+    description: When choosing MD3(Keccak) you can optionally choose its output length. Default is 512 bits.
+outputs:
+  digest:
+    description: Generated hash based on input and hash method.

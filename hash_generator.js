@@ -1,6 +1,6 @@
 const HashAlgorithmFactory = require('./lib/hash_algorithm_factory')
 
-let hasher = function (hash_type, input_str, hash_output_length) {
+let hash_generator = function (hash_type, input_str, hash_output_length) {
     return new Promise((resolve) => {
         if (typeof input_str !== 'string') {
             throw new Error('milliseconds not a number')
@@ -22,4 +22,4 @@ let hasher = function (hash_type, input_str, hash_output_length) {
     });
 };
 
-module.exports = hasher;
+module.exports = hash_generator;
