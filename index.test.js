@@ -1,4 +1,4 @@
-const hasher = require('./hasher');
+const hasher = require('./hash_generator');
 
 test('User can choose MD5 hash algorithm', async () => {
     let hash_type__value = 'MD5'
