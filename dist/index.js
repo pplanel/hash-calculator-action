@@ -7,8 +7,13 @@ require('./sourcemap-register.js');module.exports =
 
 const HashAlgorithmFactory = __nccwpck_require__(632)
 
-let generator = function (hash_type, input_str, hash_output_length) {
+let generator = function (hash_type, input_str, hash_output_length=undefined) {
     return new Promise((resolve) => {
+
+        if (hash_output_length !== undefined && hash_type !== 'SHA3' && hash_type !== 'SHA-3') {
+            throw new Error('Output length can only be used when using SHA3 method')
+        }
+
         const hash_algo = HashAlgorithmFactory
             .getHashAlgorithm(hash_type)
 
@@ -45,8 +50,7 @@ async function run() {
         const method = core.getInput('method');
         const output_length = core.getInput('output_length');
 
-        let output_string = await generator(input, method, output_length)
-
+        let output_string = await generator(method, input, output_length)
         core.setOutput('digest', output_string.toString());
     } catch (error) {
         core.setFailed(error.message);
