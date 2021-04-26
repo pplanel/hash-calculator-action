@@ -1,11 +1,11 @@
 const HashAlgorithmFactory = require('./lib/hash_algorithm_factory')
 
-<<<<<<< HEAD:hash_generator.js
-let hash_generator = function (hash_type, input_str, hash_output_length) {
-=======
 let generator = function (hash_type, input_str, hash_output_length) {
->>>>>>> c9cc720... Refactor in generator index and test:generator.js
     return new Promise((resolve) => {
+        if (hash_output_length !== undefined && (hash_type !== 'SHA3' || hash_type !== 'SHA-3')) {
+            throw new Error('Output length can only be used when using SHA3 method')
+        }
+
         const hash_algo = HashAlgorithmFactory
             .getHashAlgorithm(hash_type)
 
@@ -23,8 +23,4 @@ let generator = function (hash_type, input_str, hash_output_length) {
     });
 };
 
-<<<<<<< HEAD:hash_generator.js
-module.exports = hash_generator;
-=======
 module.exports = generator;
->>>>>>> c9cc720... Refactor in generator index and test:generator.js
