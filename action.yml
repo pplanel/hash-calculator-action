@@ -9,7 +9,7 @@ runs:
 inputs:
   method:
     required: true
-    description: The algorithm used to hash the input string. Check docs for all available methods.
+    description: The algorithm used to hash the input str\wing. Check docs for all available methods.
   input:
     required: true
     description: Input string to be converted.j

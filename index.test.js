@@ -4,7 +4,6 @@ const input_str = 'it has a cow on the line'
 
 test('User can choose MD5 hash algorithm', async () => {
     let hash_type__value = 'MD5'
-    let hash_string__value = 'it has a cow on the line'
     let hash_MD5_dgst = '5ab2d8f5b28e663b9f368f80807e5ee5'
     let output = await generator(hash_type__value, input_str)
     expect(output.toString()).toBe(hash_MD5_dgst)
