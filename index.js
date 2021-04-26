@@ -5,13 +5,13 @@ const generator = require('./generator')
 // most @actions toolkit packages have async methods
 async function run() {
     try {
-        const input_str = core.getInput('input');
-        const input_hash_algo = core.getInput('method');
-        const hash_output_length = core.getInput('ouput_lenth');
+        const input = core.getInput('input');
+        const method = core.getInput('method');
+        const output_length = core.getInput('output_length');
 
         let output_string = await generator(input, method, output_length)
 
-        core.setOutput('output_str', output_string.toString());
+        core.setOutput('digest', output_string.toString());
     } catch (error) {
         core.setFailed(error.message);
     }

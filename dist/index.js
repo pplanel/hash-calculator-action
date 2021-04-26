@@ -2,16 +2,13 @@ require('./sourcemap-register.js');module.exports =
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 834:
+/***/ 146:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const HashAlgorithmFactory = __nccwpck_require__(632)
 
-let hasher = function (hash_type, input_str, hash_output_length) {
+let generator = function (hash_type, input_str, hash_output_length) {
     return new Promise((resolve) => {
-        if (typeof input_str !== 'string') {
-            throw new Error('milliseconds not a number')
-        }
         const hash_algo = HashAlgorithmFactory
             .getHashAlgorithm(hash_type)
 
@@ -29,7 +26,7 @@ let hasher = function (hash_type, input_str, hash_output_length) {
     });
 };
 
-module.exports = hasher;
+module.exports = generator;
 
 
 /***/ }),
@@ -38,19 +35,19 @@ module.exports = hasher;
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(186);
-const hasher = __nccwpck_require__(834)
+const generator = __nccwpck_require__(146)
 
 
 // most @actions toolkit packages have async methods
 async function run() {
     try {
-        const input_str = core.getInput('input_str');
-        const input_hash_algo = core.getInput('hash_algo');
-        const hash_output_length = core.getInput('hash_output_length');
+        const input = core.getInput('input');
+        const method = core.getInput('method');
+        const output_length = core.getInput('output_length');
 
-        let output_string = await hasher(input_str, input_hash_algo, hash_output_length)
+        let output_string = await generator(input, method, output_length)
 
-        core.setOutput('output_str', output_string.toString());
+        core.setOutput('digest', output_string.toString());
     } catch (error) {
         core.setFailed(error.message);
     }
