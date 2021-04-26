@@ -30,7 +30,7 @@ test('User can choose SHA512 hash algorithm', async () => {
     expect(output.toString()).toBe(hash_SHA512_dgst)
 })
 
-test('User can choose SHA3 (Keccak) hash algorithm with default 224 bits length', async () => {
+test('User can choose SHA3 (Keccak) hash algorithm with 224 bits length', async () => {
     let hash_type__value = 'SHA3'
     let hash_output__length = 224
     let hash_SHA3_dgst = '3846550643de789638059933740be5abbf18b96815aa36b7148d46dd'
@@ -38,7 +38,7 @@ test('User can choose SHA3 (Keccak) hash algorithm with default 224 bits length'
     expect(output.toString()).toBe(hash_SHA3_dgst)
 })
 
-test('User can choose SHA3 (Keccak) hash algorithm with default 256 bits length', async () => {
+test('User can choose SHA3 (Keccak) hash algorithm with 256 bits length', async () => {
     let hash_type__value = 'SHA3'
     let hash_output__length = 256
     let hash_SHA3_dgst = '9cf4d18537dc278f07e4830e164cc60221703daab04a7c14f99d340bbe5363cc'
@@ -46,7 +46,7 @@ test('User can choose SHA3 (Keccak) hash algorithm with default 256 bits length'
     expect(output.toString()).toBe(hash_SHA3_dgst)
 })
 
-test('User can choose SHA3 (Keccak) hash algorithm with default 384 bits length', async () => {
+test('User can choose SHA3 (Keccak) hash algorithm with 384 bits length', async () => {
     let hash_type__value = 'SHA3'
     let hash_output__length = 384
     let hash_SHA3_dgst = '5f8ef3088dd7f9de28ba9f6d8a147a22f980f31588e333b36678b41ebf638185454adfd12aacef34272bee73ab01e94c'
@@ -66,6 +66,13 @@ test('User can choose RIPEMD160 hash algorithm', async () => {
     let hash_RIPEMD160_dgst = '7c7e587a03c7362cb674f67f2a1a20cdaf035232'
     let output = await generator(hash_type__value, input_str)
     expect(output.toString()).toBe(hash_RIPEMD160_dgst)
+})
+
+test('User get an error if try to use the output_len in method other than SHA3', async () => {
+    let hash_type__value = 'RIPEMD160'
+    let hash_output_len__value = 512
+    let hash_RIPEMD160_dgst = '7c7e587a03c7362cb674f67f2a1a20cdaf035232'
+    await expect(generator(hash_type__value, input_str, hash_output_len__value)).rejects.toThrow()
 })
 
 
