@@ -8,14 +8,19 @@ This actions is a wrapper around the library [CryptoJS](https://cryptojs.gitbook
 ## Example
 ```yaml
 jobs:
-  get_string_hash:
+  hash_string:
     - name: Hash PR name
-      uses: pplanel/hash-string-action@v1.0
+      uses: pplanel/hash-calculator-action@v1.2
       id: hash_result
       with:
         input: 'The quick brown fox jumps over the lazy dog'
         method: SHA3
         output_len: 384 
+  
+  use_digest:
+    - name: Print
+      run: |
+        echo ${{ steps.hash_string.output.digest }}
 
 ### output_str = 283990fa9d5fb731d786c5bbee94ea4db4910f18c62c03d173fc0a5e494422e8a0b3da7574dae7fa0baf005e504063b3
 ```
