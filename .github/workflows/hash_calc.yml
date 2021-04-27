@@ -16,6 +16,7 @@ jobs:
       with:
         input: pplanel
         method: SHA512
+        truncate: true
     - name: print output
       run: |
         echo This is the output ${{steps.hash.outputs.digest}}
