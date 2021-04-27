@@ -16,7 +16,7 @@ let generator = function (hash_type, input_str, hash_output_length) {
         if (['SHA3', 'SHA-3'].includes(hash_type)) {
 	    const hashed_string = hash_algo(input_str, hash_output_length).toString()
 
-            resolve(hashed_string + 'asda')
+            resolve(hashed_string)
         } else if(hash_output_length > 0){
 
 	    throw new Error("output_len can only be set in SHA3 mode.");
