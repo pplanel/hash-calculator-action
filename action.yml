@@ -17,6 +17,10 @@ inputs:
     required: false
     description: When choosing MD3(Keccak) you can optionally choose its output length. Default is 512 bits.
     default: -1
+  truncate:
+    required: false
+    description: Truncate the output digest
+    default: false
 outputs:
   digest:
     description: Generated hash based on input and hash method.

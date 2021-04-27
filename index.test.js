@@ -16,7 +16,6 @@ test('User can choose SHA1 hash algorithm', async () => {
     expect(output.toString()).toBe(hash_SHA1_dgst)
 })
 
-test('User can choose SHA256 hash algorithm', async () => {
     let hash_type__value = 'SHA256'
     let hash_sha256_dgst = 'f073fb96de4e223337bdfd8d80b94e290bd35dee0bea6b2f3913d5af86c92d0a'
     let output = await generator(hash_type__value, input_str)
