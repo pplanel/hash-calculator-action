@@ -5,7 +5,7 @@ branding:
   color: gray-dark
 runs:
   using: 'node12'
-  main: '../dist/index.js'
+  main: 'dist/index.js'
 inputs:
   method:
     required: true
