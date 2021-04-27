@@ -5,17 +5,18 @@ branding:
   color: gray-dark
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: '../dist/index.js'
 inputs:
   method:
     required: true
-    description: The algorithm used to hash the input str\wing. Check docs for all available methods.
+    description: The algorithm used to hash the input string. Check docs for all available methods.
   input:
     required: true
-    description: Input string to be converted.j
+    description: Input string to be converted
   output_len:
     required: false
     description: When choosing MD3(Keccak) you can optionally choose its output length. Default is 512 bits.
+    default: -1
 outputs:
   digest:
     description: Generated hash based on input and hash method.
