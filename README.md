@@ -20,7 +20,7 @@ jobs:
   use_digest:
     - name: Print
       run: |
-        echo ${{ steps.hash_string.output.digest }}
+        echo ${{ steps.hash_string.outputs.digest }}
 
 ### output_str = 283990fa9d5fb731d786c5bbee94ea4db4910f18c62c03d173fc0a5e494422e8a0b3da7574dae7fa0baf005e504063b3
 ```
