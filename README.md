@@ -10,7 +10,7 @@ This actions is a wrapper around the library [CryptoJS](https://cryptojs.gitbook
 jobs:
   hash_string:
     - name: Hash PR name
-      uses: pplanel/hash-calculator-action@v1.2
+      uses: pplanel/hash-calculator-action@v1.3.1
       id: hash_result
       with:
         input: 'The quick brown fox jumps over the lazy dog'
