@@ -32,7 +32,7 @@
   "devDependencies": {
     "@vercel/ncc": "^0.28.6",
     "eslint": "^7.29.0",
-    "jest": "^27.0.5"
+    "jest": "^27.0.6"
   },
   "directories": {
     "lib": "lib"
