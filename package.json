@@ -27,7 +27,7 @@
   "homepage": "https://github.com/pplanel/hash-string-action#readme",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "crypto-js": "^4.1.1"
+    "crypto-js": "^4.2.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.34.0",
